@@ -1,0 +1,23 @@
+import type { StatusCodeEnum } from "../types/enums/status-code";
+
+export class CustomError extends Error {
+	protected body: {
+		message: string;
+	};
+
+	public constructor(body: string, public statusCode: StatusCodeEnum) {
+		super("Error");
+
+		this.body = {
+			message: body,
+		};
+	}
+
+	public getBody() {
+		return this.body;
+	}
+
+	public getBodyString() {
+		return JSON.stringify(this.body);
+	}
+}

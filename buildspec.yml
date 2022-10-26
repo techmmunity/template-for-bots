@@ -1,0 +1,22 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - yarn
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Compiling the bot folder
+      - yarn build:bot
+  post_build:
+    commands:
+      - echo Build completed on `date`
+# Include only the files required for your application to run.
+artifacts:
+  files:
+    - bot/**/*
+    - package.json
+    - yarn.lock
+    - appspec.yml
+    - scripts/*
